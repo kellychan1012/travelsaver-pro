@@ -369,7 +369,7 @@ document.getElementById('bookingForm').addEventListener('submit', function(e) {
       setTimeout(() => {
         document.getElementById('bookingForm').reset();
         document.getElementById('successMessage').style.display = 'none';
-      }, 3000);
+      }, 30000);
     } else {
       alert('Error saving booking: ' + response.error);
     }
