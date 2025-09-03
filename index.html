@@ -350,25 +350,35 @@
   </a>
   <script>
     // Form submission handling
-    document.getElementById('bookingForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      // Get form data
-      const formData = new FormData(this);
-      const data = Object.fromEntries(formData.entries());
-      // Here you would normally send to your backend
-      console.log('Form data:', data);
-      // Show success message
+// ...existing code...
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData.entries());
+
+  fetch('https://travelsaver-pro.vercel.app/api/bookings', { // <-- Replace with your Vercel deployment URL
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(response => {
+    if (response.success) {
       document.getElementById('successMessage').style.display = 'block';
-      // Scroll to success message
-      document.getElementById('successMessage').scrollIntoView({
-        behavior: 'smooth'
-      });
-      // Reset form after 3 seconds
+      document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
       setTimeout(() => {
-        this.reset();
+        document.getElementById('bookingForm').reset();
         document.getElementById('successMessage').style.display = 'none';
       }, 3000);
-    });
+    } else {
+      alert('Error saving booking: ' + response.error);
+    }
+  })
+  .catch(err => {
+    alert('Network error. Please try again.');
+  });
+});
+// ...existing code...
 
     // Set minimum date to today
     const today = new Date().toISOString().split('T')[0];
