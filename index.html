@@ -5,482 +5,408 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TravelSaver Pro - Beat Any Travel Quote by 15%</title>
   <style>
-    /* ...your CSS here... */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .hero {
+      text-align: center;
+      color: white;
+      padding: 40px 0;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    .savings-highlight {
+      background: rgba(255,255,255,0.2);
+      padding: 20px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      margin: 20px 0;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .main-form {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      margin: 40px auto;
+      max-width: 600px;
+    }
+    .form-group {
+      margin-bottom: 25px;
+    }
+    .form-row {
+      display: flex;
+      gap: 15px;
+    }
+    .form-row .form-group {
+      flex: 1;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #555;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .submit-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    }
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+    .guarantee {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 30px 0;
+      border-left: 5px solid #28a745;
+    }
+    .testimonials {
+      background: rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 15px;
+      margin: 30px 0;
+      color: white;
+    }
+    .testimonial {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+    }
+    .savings-calculator {
+      background: rgba(255,255,255,0.2);
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      color: white;
+      text-align: center;
+    }
+    .price-comparison {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+    .price-box {
+      background: rgba(255,255,255,0.2);
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      flex: 1;
+      margin: 0 10px;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: #ff6b6b;
+      font-size: 1.5rem;
+    }
+    .new-price {
+      color: #4ecdc4;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    .floating-contact {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+      50% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6); }
+      100% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+    }
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 1px solid #c3e6cb;
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .form-row {
+        flex-direction: column;
+      }
+      .main-form {
+        padding: 20px;
+        margin: 20px 10px;
+      }
+      .price-comparison {
+        flex-direction: column;
+      }
+      .price-box {
+        margin: 10px 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- ...your HTML content here... -->
-</body>
-</html>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;TravelSaver Pro - Beat Any Travel Quote by 15%&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>* {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>min-height: 100vh;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 1200px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 40px 0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero h1 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 3rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-shadow: 2px 2px 4px rgba(0,0,0,0.3);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.3rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.9;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.savings-highlight {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255,255,255,0.2);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(10px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid rgba(255,255,255,0.3);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.main-form {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 40px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 20px 40px rgba(0,0,0,0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 40px auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 600px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.form-group {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 25px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.form-row {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.form-row .form-group {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex: 1;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>label {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #555;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>input, select, textarea {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid #e0e0e0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 16px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: border-color 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>input:focus, select:focus, textarea:focus {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>outline: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-color: #667eea;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>textarea {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>resize: vertical;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>min-height: 100px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.submit-btn {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px 40px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 18px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: transform 0.2s ease, box-shadow 0.2s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.submit-btn:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-2px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.submit-btn:active {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(0);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.guarantee {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #f8f9fa;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 30px 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-left: 5px solid #28a745;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.testimonials {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255,255,255,0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 30px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 30px 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.testimonial {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255,255,255,0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.savings-calculator {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255,255,255,0.2);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.price-comparison {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-around;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px 0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.price-box {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255,255,255,0.2);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex: 1;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 10px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.old-price {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: line-through;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #ff6b6b;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.new-price {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #4ecdc4;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.floating-contact {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>right: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #25d366;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1000;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: pulse 2s infinite;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes pulse {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>0% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>50% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6); }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>100% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.success-message {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #d4edda;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #155724;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #c3e6cb;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 768px) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.hero h1 {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-size: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.form-row {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.main-form {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>margin: 20px 10px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.price-comparison {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.price-box {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>margin: 10px 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Hero Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hero"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;🌟 TravelSaver Pro&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Beat Any Travel Quote by 15% - Guaranteed!&lt;/p&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="savings-calculator"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;💰 See Your Potential Savings&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="price-comparison"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="price-box"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4&gt;Other Sites&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="old-price"&gt;$3,000&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;small&gt;Hotels + Flights&lt;/small&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="price-box"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4&gt;Your Price&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="new-price"&gt;$2,550&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;small&gt;&lt;strong&gt;You Save: $450!&lt;/strong&gt;&lt;/small&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="savings-highlight"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;✈️ Same Hotels • Same Flights • 15% Less Money&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;No membership fees • No hidden costs • No catch&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Main Booking Form --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="main-form"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 style="text-align: center; margin-bottom: 30px; color: #333;"&gt;Get Your Free Quote in 24 Hours&lt;/h2&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;form id="bookingForm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="from"&gt;✈️ Flying From&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="from" name="from" placeholder="e.g., Sydney, Australia" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="to"&gt;🏖️ Going To&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="to" name="to" placeholder="e.g., Tokyo, Japan" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="departure"&gt;📅 Departure Date&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="date" id="departure" name="departure" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="return"&gt;📅 Return Date&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="date" id="return" name="return" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="travelers"&gt;👥 Number of Travelers&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="travelers" name="travelers" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value=""&gt;Select travelers&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="1"&gt;1 Person&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="2"&gt;2 People&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="3"&gt;3 People&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="4"&gt;4 People&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="5+"&gt;5+ People&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="budget"&gt;💰 Budget Range (AUD)&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="budget" name="budget" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value=""&gt;Select budget&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="1000-2000"&gt;$1,000 - $2,000&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="2000-5000"&gt;$2,000 - $5,000&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="5000-10000"&gt;$5,000 - $10,000&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="10000+"&gt;$10,000+&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="accommodation"&gt;🏨 Accommodation Type&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;select id="accommodation" name="accommodation" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value=""&gt;Select type&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="budget"&gt;Budget Hotels/Hostels&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="mid-range"&gt;3-4 Star Hotels&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="luxury"&gt;Luxury Hotels/Resorts&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="mixed"&gt;Mix of Different Types&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="name"&gt;👤 Your Name&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="name" name="name" placeholder="Your full name" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="email"&gt;📧 Email Address&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="email" id="email" name="email" placeholder="your.email@example.com" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="phone"&gt;📱 Phone Number&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="tel" id="phone" name="phone" placeholder="Your phone number" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="existing-quote"&gt;💸 Do you have an existing quote to beat?&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;textarea id="existing-quote" name="existing-quote" placeholder="Paste any existing quotes you've received, or tell us what websites you've checked. This helps us beat their prices!"&gt;&lt;/textarea&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="special-requests"&gt;✨ Special Requests&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;textarea id="special-requests" name="special-requests" placeholder="Any special requirements? (e.g., car rental, specific hotel location, dietary needs, accessibility requirements)"&gt;&lt;/textarea&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="guarantee"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4&gt;🛡️ Our Guarantee:&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;• We'll beat any genuine quote by at least 10%, or your quote is free&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>• 24-hour quote turnaround&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>• No payment until you're 100% happy with the deal&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>• Full booking support and customer service&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="submit" class="submit-btn"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>Get My 15% Savings Quote →</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="success-message" id="successMessage"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4&gt;🎉 Quote Request Received!&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;We'll send your personalized quote within 24 hours. Check your email and keep an eye on your phone - we might call with an amazing deal!&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/form&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Testimonials --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="testimonials"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 style="text-align: center; margin-bottom: 20px;"&gt;💬 What Our Customers Say&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="testimonial"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;strong&gt;"Saved $680 on our Bali trip!"&lt;/strong&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>"Same resort, same flights as Booking.com, but $680 cheaper. I couldn't believe it was real until I got the confirmation emails." - Sarah M.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="testimonial"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;strong&gt;"Business travel made affordable"&lt;/strong&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>"As a consultant who travels monthly, this service has saved me thousands. Professional service, instant booking." - David L.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="testimonial"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;strong&gt;"Family vacation within budget"&lt;/strong&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>"Four people to Disney World for $450 less than everywhere else. The kids don't know daddy is now their hero!" - Mike R.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Floating WhatsApp Contact --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="#" class="floating-contact" id="whatsappContact"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>💬 Quick Quote via WhatsApp</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/a&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Form submission handling</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('bookingForm').addEventListener('submit', function(e) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>e.preventDefault();</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Get form data</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const formData = new FormData(this);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const data = Object.fromEntries(formData.entries());</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Here you would normally send to your backend</p>
-<p class="p1"><span class="Apple-converted-space">            </span>console.log('Form data:', data);</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Show success message</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('successMessage').style.display = 'block';</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Scroll to success message</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('successMessage').scrollIntoView({</p>
-<p class="p1"><span class="Apple-converted-space">                </span>behavior: 'smooth'</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Optional: Send email notification (you'd implement this server-side)</p>
-<p class="p1"><span class="Apple-converted-space">            </span>// For now, we'll simulate the process</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Reset form after 3 seconds</p>
-<p class="p1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>this.reset();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}, 3000);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Set minimum date to today</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const today = new Date().toISOString().split('T')[0];</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('departure').setAttribute('min', today);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('return').setAttribute('min', today);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Update return date minimum when departure date changes</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('departure').addEventListener('change', function() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('return').setAttribute('min', this.value);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// WhatsApp contact</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('whatsappContact').addEventListener('click', function(e) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>e.preventDefault();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Replace with your actual WhatsApp number</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const phone = "0435907061"; // e.g., "61412345678" for Australian number</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const message = "Hi! I'm interested in getting a travel quote with 15% savings.";</p>
-<p class="p1"><span class="Apple-converted-space">            </span>window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Dynamic savings calculator</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const budgetSelect = document.getElementById('budget');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>budgetSelect.addEventListener('change', function() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>updateSavingsDisplay(this.value);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function updateSavingsDisplay(budget) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const savings = {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'1000-2000': { original: 1500, saved: 1275, savings: 225 },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'2000-5000': { original: 3500, saved: 2975, savings: 525 },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'5000-10000': { original: 7500, saved: 6375, savings: 1125 },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>'10000+': { original: 15000, saved: 12750, savings: 2250 }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (budget &amp;&amp; savings[budget]) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const data = savings[budget];</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.querySelector('.old-price').textContent = `$${data.original.toLocaleString()}`;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.querySelector('.new-price').textContent = `$${data.saved.toLocaleString()}`;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.querySelector('.price-box small strong').textContent = `You Save: $${data.savings.toLocaleString()}!`;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
-</body>
-</html>
+  <div class="container">
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1>🌟 TravelSaver Pro</h1>
+      <p>Beat Any Travel Quote by 15% - Guaranteed!</p>
+      <div class="savings-calculator">
+        <h3>💰 See Your Potential Savings</h3>
+        <div class="price-comparison">
+          <div class="price-box">
+            <h4>Other Sites</h4>
+            <div class="old-price">$3,000</div>
+            <small>Hotels + Flights</small>
+          </div>
+          <div class="price-box">
+            <h4>Your Price</h4>
+            <div class="new-price">$2,550</div>
+            <small><strong>You Save: $450!</strong></small>
+          </div>
+        </div>
+      </div>
+      <div class="savings-highlight">
+        <h3>✈️ Same Hotels • Same Flights • 15% Less Money</h3>
+        <p>No membership fees • No hidden costs • No catch</p>
+      </div>
+    </div>
+    <!-- Main Booking Form -->
+    <div class="main-form">
+      <h2 style="text-align: center; margin-bottom: 30px; color: #333;">Get Your Free Quote in 24 Hours</h2>
+      <form id="bookingForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="from">✈️ Flying From</label>
+            <input type="text" id="from" name="from" placeholder="e.g., Sydney, Australia" required>
+          </div>
+          <div class="form-group">
+            <label for="to">🏖️ Going To</label>
+            <input type="text" id="to" name="to" placeholder="e.g., Tokyo, Japan" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="departure">📅 Departure Date</label>
+            <input type="date" id="departure" name="departure" required>
+          </div>
+          <div class="form-group">
+            <label for="return">📅 Return Date</label>
+            <input type="date" id="return" name="return" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="travelers">👥 Number of Travelers</label>
+            <select id="travelers" name="travelers" required>
+              <option value="">Select travelers</option>
+              <option value="1">1 Person</option>
+              <option value="2">2 People</option>
+              <option value="3">3 People</option>
+              <option value="4">4 People</option>
+              <option value="5+">5+ People</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="budget">💰 Budget Range (AUD)</label>
+            <select id="budget" name="budget" required>
+              <option value="">Select budget</option>
+              <option value="1000-2000">$1,000 - $2,000</option>
+              <option value="2000-5000">$2,000 - $5,000</option>
+              <option value="5000-10000">$5,000 - $10,000</option>
+              <option value="10000+">$10,000+</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="accommodation">🏨 Accommodation Type</label>
+          <select id="accommodation" name="accommodation" required>
+            <option value="">Select type</option>
+            <option value="budget">Budget Hotels/Hostels</option>
+            <option value="mid-range">3-4 Star Hotels</option>
+            <option value="luxury">Luxury Hotels/Resorts</option>
+            <option value="mixed">Mix of Different Types</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="name">👤 Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">📧 Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">📱 Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="existing-quote">💸 Do you have an existing quote to beat?</label>
+          <textarea id="existing-quote" name="existing-quote" placeholder="Paste any existing quotes you've received, or tell us what websites you've checked. This helps us beat their prices!"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="special-requests">✨ Special Requests</label>
+          <textarea id="special-requests" name="special-requests" placeholder="Any special requirements? (e.g., car rental, specific hotel location, dietary needs, accessibility requirements)"></textarea>
+        </div>
+        <div class="guarantee">
+          <h4>🛡️ Our Guarantee:</h4>
+          <p>
+            • We'll beat any genuine quote by at least 10%, or your quote is free<br>
+            • 24-hour quote turnaround<br>
+            • No payment until you're 100% happy with the deal<br>
+            • Full booking support and customer service
+          </p>
+        </div>
+        <button type="submit" class="submit-btn">
+          Get My 15% Savings Quote →
+        </button>
+        <div class="success-message" id="successMessage">
+          <h4>🎉 Quote Request Received!</h4>
+          <p>We'll send your personalized quote within 24 hours. Check your email and keep an eye on your phone - we might call with an amazing deal!</p>
+        </div>
+      </form>
+    </div>
+    <!-- Testimonials -->
+    <div class="testimonials">
+      <h3 style="text-align: center; margin-bottom: 20px;">💬 What Our Customers Say</h3>
+      <div class="testimonial">
+        <strong>"Saved $680 on our Bali trip!"</strong><br>
+        "Same resort, same flights as Booking.com, but $680 cheaper. I couldn't believe it was real until I got the confirmation emails." - Sarah M.
+      </div>
+      <div class="testimonial">
+        <strong>"Business travel made affordable"</strong><br>
+        "As a consultant who travels monthly, this service has saved me thousands. Professional service, instant booking." - David L.
+      </div>
+      <div class="testimonial">
+        <strong>"Family vacation within budget"</strong><br>
+        "Four people to Disney World for $450 less than everywhere else. The kids don't know daddy is now their hero!" - Mike R.
+      </div>
+    </div>
+  </div>
+  <!-- Floating WhatsApp Contact -->
+  <a href="#" class="floating-contact" id="whatsappContact">
+    💬 Quick Quote via WhatsApp
+  </a>
+  <script>
+    // Form submission handling
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Get form data
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+      // Here you would normally send to your backend
+      console.log('Form data:', data);
+      // Show success message
+      document.getElementById('successMessage').style.display = 'block';
+      // Scroll to success message
+      document.getElementById('successMessage').scrollIntoView({
+        behavior: 'smooth'
+      });
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        this.reset();
+        document.getElementById('successMessage').style.display = 'none';
+      }, 3000);
+    });
+
+    // Set minimum date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('departure').setAttribute('min', today);
+    document.getElementById('return').setAttribute('min', today);
+
+    // Update return date minimum when departure date changes
+    document.getElementById('departure').addEventListener('change', function() {
+      document.getElementById('return').setAttribute('min', this.value);
+    });
+
+    // WhatsApp contact
+    document.getElementById('whatsappContact').addEventListener('click', function(e) {
+      e.preventDefault();
+      // Replace with your actual WhatsApp number
+      const phone = "61435907061"; // e.g., "61412345678" for Australian number
+      const message = "Hi! I'm interested in getting a travel quote with 15% savings.";
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+
+    // Dynamic savings calculator
+    const budgetSelect = document.getElementById('budget');
+    budgetSelect.addEventListener('change', function() {
+      updateSavingsDisplay(this.value);
+    });
+
+    function updateSavingsDisplay(budget) {
+      const savings = {
+        '1000-2000': { original: 1500, saved: 1275, savings: 225 },
+        '2000-5000': { original: 3500, saved: 2975, savings: 525 },
+        '5000-10000': { original: 7500, saved: 6375, savings: 1125 },
+        '10000+': { original: 15000, saved: 12750, savings: 2250 }
+      };
+      if (budget && savings[budget]) {
+        const data = savings[budget];
+        document.querySelector('.old-price').textContent = `$${data.original.toLocaleString()}`;
+        document.querySelector('.new-price').textContent = `$${data.saved.toLocaleString()}`;
+        document.querySelector('.price-box:last-child small strong').textContent = `You Save: $${data.savings.toLocaleString()}!`;
+      }
+    }
+  </script>
