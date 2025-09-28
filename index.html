@@ -7,419 +7,537 @@
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
     <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    .hero {
-      text-align: center;
-      color: white;
-      padding: 40px 0;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-    .hero p {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
-      opacity: 0.9;
-    }
-    .savings-highlight {
-      background: rgba(255,255,255,0.2);
-      padding: 20px;
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-      margin: 20px 0;
-      border: 1px solid rgba(255,255,255,0.3);
-    }
-    .main-form {
-      background: white;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-      margin: 40px auto;
-      max-width: 600px;
-    }
-    .form-group {
-      margin-bottom: 25px;
-    }
-    .form-row {
-      display: flex;
-      gap: 15px;
-    }
-    .form-row .form-group {
-      flex: 1;
-    }
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #555;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 12px 15px;
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      font-size: 16px;
-      transition: border-color 0.3s ease;
-    }
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-    }
-    textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-    .submit-btn {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 15px 40px;
-      border: none;
-      border-radius: 50px;
-      font-size: 18px;
-      font-weight: 600;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 20px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-    }
-    .submit-btn:active {
-      transform: translateY(0);
-    }
-    .guarantee {
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 15px;
-      margin: 30px 0;
-      border-left: 5px solid #28a745;
-    }
-    .testimonials {
-      background: rgba(255,255,255,0.1);
-      padding: 30px;
-      border-radius: 15px;
-      margin: 30px 0;
-      color: white;
-    }
-    .testimonial {
-      margin-bottom: 20px;
-      padding: 15px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 10px;
-    }
-    .savings-calculator {
-      background: rgba(255,255,255,0.2);
-      padding: 20px;
-      border-radius: 15px;
-      margin: 20px 0;
-      color: white;
-      text-align: center;
-    }
-    .price-comparison {
-      display: flex;
-      justify-content: space-around;
-      margin: 20px 0;
-    }
-    .price-box {
-      background: rgba(255,255,255,0.2);
-      padding: 15px;
-      border-radius: 10px;
-      text-align: center;
-      flex: 1;
-      margin: 0 10px;
-    }
-    .old-price {
-      text-decoration: line-through;
-      color: #ff6b6b;
-      font-size: 1.5rem;
-    }
-    .new-price {
-      color: #4ecdc4;
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
-    .floating-contact {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25d366;
-      color: white;
-      padding: 15px 20px;
-      border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-      z-index: 1000;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
-      50% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6); }
-      100% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
-    }
-    .success-message {
-      background: #d4edda;
-      color: #155724;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 20px 0;
-      border: 1px solid #c3e6cb;
-      display: none;
-    }
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .form-row {
-        flex-direction: column;
-      }
-      .main-form {
-        padding: 20px;
-        margin: 20px 10px;
-      }
-      .price-comparison {
-        flex-direction: column;
-      }
-      .price-box {
-        margin: 10px 0;
-      }
-    }
-  </style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .savings-highlight {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin: 20px 0;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .main-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin: 40px auto;
+            max-width: 600px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .guarantee {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #28a745;
+        }
+
+        .testimonials {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            color: white;
+        }
+
+        .testimonial {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+
+        .savings-calculator {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .price-comparison {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .price-box {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #ff6b6b;
+            font-size: 1.5rem;
+        }
+
+        .new-price {
+            color: #4ecdc4;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .floating-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6); }
+            100% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .main-form {
+                padding: 20px;
+                margin: 20px 10px;
+            }
+            
+            .price-comparison {
+                flex-direction: column;
+            }
+            
+            .price-box {
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Hero Section -->
-    <div class="hero">
-      <h1>🌟 TravelSaver Pro</h1>
-      <p>Beat Any Travel Quote by 15% - Guaranteed!</p>
-      <div class="savings-calculator">
-        <h3>💰 See Your Potential Savings</h3>
-        <div class="price-comparison">
-          <div class="price-box">
-            <h4>Other Sites</h4>
-            <div class="old-price">$3,000</div>
-            <small>Hotels + Flights</small>
-          </div>
-          <div class="price-box">
-            <h4>Your Price</h4>
-            <div class="new-price">$2,550</div>
-            <small><strong>You Save: $450!</strong></small>
-          </div>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>🌟 TravelSaver Pro</h1>
+            <p>Beat Any Travel Quote by 15% - Guaranteed!</p>
+            
+            <div class="savings-calculator">
+                <h3>💰 See Your Potential Savings</h3>
+                <div class="price-comparison">
+                    <div class="price-box">
+                        <h4>Other Sites</h4>
+                        <div class="old-price">$3,000</div>
+                        <small>Hotels + Flights</small>
+                    </div>
+                    <div class="price-box">
+                        <h4>Your Price</h4>
+                        <div class="new-price">$2,550</div>
+                        <small><strong>You Save: $450!</strong></small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="savings-highlight">
+                <h3>✈️ Same Hotels • Same Flights • 15% Less Money</h3>
+                <p>No membership fees • No hidden costs • No catch</p>
+            </div>
         </div>
-      </div>
-      <div class="savings-highlight">
-        <h3>✈️ Same Hotels • Same Flights • 15% Less Money</h3>
-        <p>No membership fees • No hidden costs • No catch</p>
-      </div>
+
+        <!-- Main Booking Form -->
+        <div class="main-form">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #333;">Get Your Free Quote in 24 Hours</h2>
+            
+            <form id="bookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="from">✈️ Flying From</label>
+                        <input type="text" id="from" name="from" placeholder="e.g., Sydney, Australia" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="to">🏖️ Going To</label>
+                        <input type="text" id="to" name="to" placeholder="e.g., Tokyo, Japan" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="departure">📅 Departure Date</label>
+                        <input type="date" id="departure" name="departure" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="return">📅 Return Date</label>
+                        <input type="date" id="return" name="return" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="travelers">👥 Number of Travelers</label>
+                        <select id="travelers" name="travelers" required>
+                            <option value="">Select travelers</option>
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5+">5+ People</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">💰 Budget Range (AUD)</label>
+                        <select id="budget" name="budget" required>
+                            <option value="">Select budget</option>
+                            <option value="1000-2000">$1,000 - $2,000</option>
+                            <option value="2000-5000">$2,000 - $5,000</option>
+                            <option value="5000-10000">$5,000 - $10,000</option>
+                            <option value="10000+">$10,000+</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="accommodation">🏨 Accommodation Type</label>
+                    <select id="accommodation" name="accommodation" required>
+                        <option value="">Select type</option>
+                        <option value="budget">Budget Hotels/Hostels</option>
+                        <option value="mid-range">3-4 Star Hotels</option>
+                        <option value="luxury">Luxury Hotels/Resorts</option>
+                        <option value="mixed">Mix of Different Types</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">👤 Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your full name" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">📧 Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">📱 Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="existing-quote">💸 Do you have an existing quote to beat?</label>
+                    <textarea id="existing-quote" name="existing-quote" placeholder="Paste any existing quotes you've received, or tell us what websites you've checked. This helps us beat their prices!"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="special-requests">✨ Special Requests</label>
+                    <textarea id="special-requests" name="special-requests" placeholder="Any special requirements? (e.g., car rental, specific hotel location, dietary needs, accessibility requirements)"></textarea>
+                </div>
+
+                <div class="guarantee">
+                    <h4>🛡️ Our Guarantee:</h4>
+                    <p>• We'll beat any genuine quote by at least 10%, or your quote is free<br>
+                    • 24-hour quote turnaround<br>
+                    • No payment until you're 100% happy with the deal<br>
+                    • Full booking support and customer service</p>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Get My 15% Savings Quote →
+                </button>
+
+                <div class="success-message" id="successMessage">
+                    <h4>🎉 Quote Request Received!</h4>
+                    <p>We'll send your personalized quote within 24 hours. Check your email and keep an eye on your phone - we might call with an amazing deal!</p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Testimonials -->
+        <div class="testimonials">
+            <h3 style="text-align: center; margin-bottom: 20px;">💬 What Our Customers Say</h3>
+            <div class="testimonial">
+                <strong>"Saved $680 on our Bali trip!"</strong><br>
+                "Same resort, same flights as Booking.com, but $680 cheaper. I couldn't believe it was real until I got the confirmation emails." - Sarah M.
+            </div>
+            <div class="testimonial">
+                <strong>"Business travel made affordable"</strong><br>
+                "As a consultant who travels monthly, this service has saved me thousands. Professional service, instant booking." - David L.
+            </div>
+            <div class="testimonial">
+                <strong>"Family vacation within budget"</strong><br>
+                "Four people to Disney World for $450 less than everywhere else. The kids don't know daddy is now their hero!" - Mike R.
+            </div>
+        </div>
     </div>
-    <!-- Main Booking Form -->
-    <div class="main-form">
-      <h2 style="text-align: center; margin-bottom: 30px; color: #333;">Get Your Free Quote in 24 Hours</h2>
-        <form id="bookingForm" action="https://formspree.io/f/xqayeoke" method="POST">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="from">✈️ Flying From</label>
-            <input type="text" id="from" name="from" placeholder="e.g., Sydney, Australia" required>
-          </div>
-          <div class="form-group">
-            <label for="to">🏖️ Going To</label>
-            <input type="text" id="to" name="to" placeholder="e.g., Tokyo, Japan" required>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="departure">📅 Departure Date</label>
-            <input type="date" id="departure" name="departure" required>
-          </div>
-          <div class="form-group">
-            <label for="return">📅 Return Date</label>
-            <input type="date" id="return" name="return" required>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="travelers">👥 Number of Travelers</label>
-            <select id="travelers" name="travelers" required>
-              <option value="">Select travelers</option>
-              <option value="1">1 Person</option>
-              <option value="2">2 People</option>
-              <option value="3">3 People</option>
-              <option value="4">4 People</option>
-              <option value="5+">5+ People</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="budget">💰 Budget Range (AUD)</label>
-            <select id="budget" name="budget" required>
-              <option value="">Select budget</option>
-              <option value="1000-2000">$1,000 - $2,000</option>
-              <option value="2000-5000">$2,000 - $5,000</option>
-              <option value="5000-10000">$5,000 - $10,000</option>
-              <option value="10000+">$10,000+</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="accommodation">🏨 Accommodation Type</label>
-          <select id="accommodation" name="accommodation" required>
-            <option value="">Select type</option>
-            <option value="budget">Budget Hotels/Hostels</option>
-            <option value="mid-range">3-4 Star Hotels</option>
-            <option value="luxury">Luxury Hotels/Resorts</option>
-            <option value="mixed">Mix of Different Types</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="name">👤 Your Name</label>
-          <input type="text" id="name" name="name" placeholder="Your full name" required>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="email">📧 Email Address</label>
-            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">📱 Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="existing-quote">💸 Do you have an existing quote to beat?</label>
-          <textarea id="existing-quote" name="existing-quote" placeholder="Paste any existing quotes you've received, or tell us what websites you've checked. This helps us beat their prices!"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="special-requests">✨ Special Requests</label>
-          <textarea id="special-requests" name="special-requests" placeholder="Any special requirements? (e.g., car rental, specific hotel location, dietary needs, accessibility requirements)"></textarea>
-        </div>
-        <div class="guarantee">
-          <h4>🛡️ Our Guarantee:</h4>
-          <p>
-            • We'll beat any genuine quote by at least 10%, or your quote is free<br>
-            • 24-hour quote turnaround<br>
-            • No payment until you're 100% happy with the deal<br>
-            • Full booking support and customer service
-          </p>
-        </div>
-        <button type="submit" class="submit-btn">
-          Get My 15% Savings Quote →
-        </button>
-        <div class="success-message" id="successMessage">
-          <h4>🎉 Quote Request Received!</h4>
-          <p>We'll send your personalized quote within 24 hours. Check your email and keep an eye on your phone - we might call with an amazing deal!</p>
-        </div>
-      </form>
-    </div>
-    <!-- Testimonials -->
-    <div class="testimonials">
-      <h3 style="text-align: center; margin-bottom: 20px;">💬 What Our Customers Say</h3>
-      <div class="testimonial">
-        <strong>"Saved $680 on our Bali trip!"</strong><br>
-        "Same resort, same flights as Booking.com, but $680 cheaper. I couldn't believe it was real until I got the confirmation emails." - Sarah M.
-      </div>
-      <div class="testimonial">
-        <strong>"Business travel made affordable"</strong><br>
-        "As a consultant who travels monthly, this service has saved me thousands. Professional service, instant booking." - David L.
-      </div>
-      <div class="testimonial">
-        <strong>"Family vacation within budget"</strong><br>
-        "Four people to Disney World for $450 less than everywhere else. The kids don't know daddy is now their hero!" - Mike R.
-      </div>
-    </div>
-  </div>
-  <!-- Floating WhatsApp Contact -->
-  <a href="#" class="floating-contact" id="whatsappContact">
-    💬 Quick Quote via WhatsApp
-  </a>
-  <script>
-    // Form submission handling
-// ...existing code...
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const formData = new FormData(this);
-  const data = Object.fromEntries(formData.entries());
 
-  fetch('https://travelsaver-pro.vercel.app/api/bookings', { // <-- Replace with your Vercel deployment URL
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  })
-  .then(res => res.json())
-  .then(response => {
-    if (response.success) {
-      document.getElementById('successMessage').style.display = 'block';
-      document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-      setTimeout(() => {
-        document.getElementById('bookingForm').reset();
-        document.getElementById('successMessage').style.display = 'none';
-      }, 30000);
-    } else {
-      alert('Error saving booking: ' + response.error);
-    }
-  })
-  .catch(err => {
-    alert('Network error. Please try again.');
-  });
-});
-// ...existing code...
+    <!-- Floating WhatsApp Contact -->
+    <a href="#" class="floating-contact" id="whatsappContact">
+        💬 Quick Quote via WhatsApp
+    </a>
 
-    // Set minimum date to today
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('departure').setAttribute('min', today);
-    document.getElementById('return').setAttribute('min', today);
+    <script>
+        // Google Sheets Integration
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxgKuOQ_DcV8KOrmAym9EY8NZMLpKmZtBRIifR3fKFbgtdXGNURI3Pni_CLcqkHvlkW/exec'; // You'll replace this
+        
+        // Form submission handling with Google Sheets
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Disable submit button to prevent double submission
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending Your Quote Request...';
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Add timestamp
+            data.timestamp = new Date().toLocaleString('en-AU', {
+                timeZone: 'Australia/Sydney',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            // Send to Google Sheets
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Important for Google Apps Script
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            }).then(() => {
+                // Success - show success message (no-cors means we can't read response)
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Scroll to success message
+                document.getElementById('successMessage').scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Reset form
+                this.reset();
+                
+                // Send email notification (optional)
+                sendEmailNotification(data);
+                
+            }).catch(error => {
+                console.error('Error:', error);
+                alert('Oops! There was a problem sending your quote request. Please try refreshing the page or contact us directly via WhatsApp.');
+            }).finally(() => {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            });
+        });
+        
+        // Optional: Send email notification using a simple service
+        function sendEmailNotification(data) {
+            // This uses a simple email service - you can set this up later
+            const emailData = {
+                to: 'your-email@example.com', // Your email
+                subject: '🎯 New Travel Quote Request',
+                body: `
+New quote request received:
 
-    // Update return date minimum when departure date changes
-    document.getElementById('departure').addEventListener('change', function() {
-      document.getElementById('return').setAttribute('min', this.value);
-    });
+Customer: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
 
-    // WhatsApp contact
-    document.getElementById('whatsappContact').addEventListener('click', function(e) {
-      e.preventDefault();
-      // Replace with your actual WhatsApp number
-      const phone = "61435907061"; // e.g., "61412345678" for Australian number
-      const message = "Hi! I'm interested in getting a travel quote with 15% savings.";
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-    });
+Trip Details:
+From: ${data.from}
+To: ${data.to}
+Departure: ${data.departure}
+Return: ${data.return}
+Travelers: ${data.travelers}
+Budget: ${data.budget}
+Accommodation: ${data.accommodation}
 
-    // Dynamic savings calculator
-    const budgetSelect = document.getElementById('budget');
-    budgetSelect.addEventListener('change', function() {
-      updateSavingsDisplay(this.value);
-    });
+Existing Quote: ${data['existing-quote'] || 'None'}
+Special Requests: ${data['special-requests'] || 'None'}
 
-    function updateSavingsDisplay(budget) {
-      const savings = {
-        '1000-2000': { original: 1500, saved: 1275, savings: 225 },
-        '2000-5000': { original: 3500, saved: 2975, savings: 525 },
-        '5000-10000': { original: 7500, saved: 6375, savings: 1125 },
-        '10000+': { original: 15000, saved: 12750, savings: 2250 }
-      };
-      if (budget && savings[budget]) {
-        const data = savings[budget];
-        document.querySelector('.old-price').textContent = `$${data.original.toLocaleString()}`;
-        document.querySelector('.new-price').textContent = `$${data.saved.toLocaleString()}`;
-        document.querySelector('.price-box:last-child small strong').textContent = `You Save: $${data.savings.toLocaleString()}!`;
-      }
-    }
-  </script>
+Submitted: ${data.timestamp}
+                `.trim()
+            };
+            
+            console.log('Email notification data:', emailData);
+            // You can implement email sending later
+        }
+
+
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('departure').setAttribute('min', today);
+        document.getElementById('return').setAttribute('min', today);
+
+        // Update return date minimum when departure date changes
+        document.getElementById('departure').addEventListener('change', function() {
+            document.getElementById('return').setAttribute('min', this.value);
+        });
+
+        // WhatsApp contact
+        document.getElementById('whatsappContact').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Replace with your actual WhatsApp number
+            const phone = "YOUR_WHATSAPP_NUMBER"; // e.g., "61412345678" for Australian number
+            const message = "Hi! I'm interested in getting a travel quote with 15% savings.";
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+        });
+
+        // Dynamic savings calculator
+        const budgetSelect = document.getElementById('budget');
+        budgetSelect.addEventListener('change', function() {
+            updateSavingsDisplay(this.value);
+        });
+
+        function updateSavingsDisplay(budget) {
+            const savings = {
+                '1000-2000': { original: 1500, saved: 1275, savings: 225 },
+                '2000-5000': { original: 3500, saved: 2975, savings: 525 },
+                '5000-10000': { original: 7500, saved: 6375, savings: 1125 },
+                '10000+': { original: 15000, saved: 12750, savings: 2250 }
+            };
+
+            if (budget && savings[budget]) {
+                const data = savings[budget];
+                document.querySelector('.old-price').textContent = `$${data.original.toLocaleString()}`;
+                document.querySelector('.new-price').textContent = `$${data.saved.toLocaleString()}`;
+                document.querySelector('.price-box small strong').textContent = `You Save: $${data.savings.toLocaleString()}!`;
+            }
+        }
+    </script>
+</body>
+</html>
